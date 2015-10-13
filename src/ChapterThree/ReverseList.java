@@ -59,11 +59,14 @@ public class ReverseList {
 	}
 	
 	public void recursiveReverseList(ListNode head){
-		if(head==null){
-			return;
+		if(head==null||head.next==null){
+			return head;
 		}
-		recursiveReverseList(head.next);
-		System.out.println(head.val);
+
+		ListNode node=recursiveReverseList(head.next);
+        head.next.next=head;
+        head.next=null;
+		return node;
 	}
 	
 	public static void main(String[] args){
